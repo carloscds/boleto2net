@@ -39,7 +39,7 @@ namespace Boleto2Net {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Boleto2Net.Html", typeof(Html).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Boleto2.Net.Html", typeof(Html).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

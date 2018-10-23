@@ -13,6 +13,7 @@ namespace Boleto2Net
 {
     using System.Linq;
 
+    [Serializable()]
     public class BoletoBancario  : IDisposable    {
         String _vLocalLogoCedente = String.Empty;
 
@@ -411,7 +412,7 @@ namespace Boleto2Net
 
             #region Css
             {
-                var arquivoCss = usaCsspdf ? "Boleto2Net.BoletoImpressao.BoletoNetPDF.css" : "Boleto2Net.BoletoImpressao.BoletoNet.css";
+                var arquivoCss = usaCsspdf ? "Boleto2.Net.BoletoImpressao.BoletoNetPDF.css" : "Boleto2.Net.BoletoImpressao.BoletoNet.css";
                 var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream(arquivoCss);
 
                 using (var sr = new StreamReader(stream))
@@ -621,7 +622,7 @@ namespace Boleto2Net
             var fnBarra = fileName + @"BoletoNetBarra.gif";
             if (!File.Exists(fnBarra))
             {
-                var streamBarra = Assembly.GetExecutingAssembly().GetManifestResourceStream("BoletoNetCore.Imagens.barra.gif");
+                var streamBarra = Assembly.GetExecutingAssembly().GetManifestResourceStream("Boleto2Net.Imagens.barra.gif");
                 using (Stream file = File.Create(fnBarra))
                 {
                     CopiarStream(streamBarra, file);
@@ -717,7 +718,7 @@ namespace Boleto2Net
             //Salvo a imagem apenas 1 vez
             if (!File.Exists(fnBarra))
             {
-                var streamBarra = Assembly.GetExecutingAssembly().GetManifestResourceStream("BoletoNetCore.Imagens.barra.gif");
+                var streamBarra = Assembly.GetExecutingAssembly().GetManifestResourceStream("Boleto2Net.Imagens.barra.gif");
                 using (Stream file = File.Create(fnBarra))
                 {
                     CopiarStream(streamBarra, file);
