@@ -192,25 +192,22 @@ namespace Boleto2Net.Testes
                     var html = new StringBuilder();
                     foreach (var boletoTmp in boletos)
                     {
-                        using (var boletoParaImpressao = new BoletoBancario
+                        var boletoParaImpressao = new BoletoBancario
                         {
                             Boleto = boletoTmp,
                             OcultarInstrucoes = false,
                             MostrarComprovanteEntrega = false,
                             MostrarEnderecoCedente = true,
                             ExibirDemonstrativo = true
-                        })
-                        {
-                            html.Append("<div style=\"page-break-after: always;\">");
-                            html.Append(boletoParaImpressao.MontaHtml());
-                            html.Append("</div>");
-                        }
+                        };
+                        html.Append("<div style=\"page-break-after: always;\">");
+                        html.Append(boletoParaImpressao.MontaHtml());
+                        html.Append("</div>");
                         var pdf = new HtmlToPdfConverter().GeneratePdf(html.ToString());
                         using (var fs = new FileStream(nomeArquivoPDF, FileMode.Create))
                             fs.Write(pdf, 0, pdf.Length);
                         if (!File.Exists(nomeArquivoPDF))
                             Assert.Fail("Arquivo Boletos (PDF) não encontrado: " + nomeArquivoPDF);
-
                     }
                 }
                 catch (Exception e)
